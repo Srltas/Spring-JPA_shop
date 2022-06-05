@@ -21,3 +21,15 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+# jpashop
+jpashop/.gradle
+jpashop/.idea
+jpashop/.build
+jpashop/gradle
+jpashop/out
+jpashop/.gitignore
+jpashop/gradlew
+jpashop/gradlew.bat
+jpashop/HELP.md
+jpashop/settings.gradle
