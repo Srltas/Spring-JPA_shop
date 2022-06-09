@@ -33,3 +33,15 @@ jpashop/gradlew
 jpashop/gradlew.bat
 jpashop/HELP.md
 jpashop/settings.gradle
+
+# jpashop_api
+jpashop_api/.gradle
+jpashop_api/.idea
+jpashop_api/.build
+jpashop_api/gradle
+jpashop_api/out
+jpashop_api/.gitignore
+jpashop_api/gradlew
+jpashop_api/gradlew.bat
+jpashop_api/HELP.md
+jpashop_api/settings.gradle
