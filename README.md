@@ -37,4 +37,14 @@
 * DTO로 사용했을 때 최악의 경우(모두 영속성 컨텍스트에 없을 시) 쿼리가 총 1 + N + N번 실행됨 ex) order 조회 1번(조회 결과 수가 N) + order -> member 조회 N번 + order -> delivery 조회 N번
 * 엔티티를 fetch join을 사용해 쿼리 1번 조회로 데이터를 모두 가져옴 (member, delivery 모두 값을 가지고 있기 때문에 지연로딩X)
 * 일반적인 SQL을 사용할 때 처럼 원하는 값을 선택하여 DTO를 통해 바로 조회를 할 수 있음
-* 
+
+## 22.06.11
+* 일대다 관계(OneToMany) 조회, 최적화
+* 페치 조인으로 SQL 1번만 실행, distinct를 사용해 1대다 조인으로 증가한 row의 중복을 걸러줌 / 페이징 불가능
+* ToOne(OneToOne, ManyToOne) 관계는 모두 페치조인, 컬렉션은 지연 로딩으로 조회
+* 지연 로딩의 성능 최적화를 위해 hibernate.default_batch_fetch_size 적용
+* OSIV : API 응답이 끝날 때 까지 영속성 컨텍스트와 데이터베이스 커넥션을 유지 -> controller에서 클라이언트에게 응답을 줄 때 까지 데이터베이스 커넥션을 유지하는 것
+* 기본적으로 OSIV는 켜져있음
+* OSIV를 끄면 모든 지연로딩을 트랜잭션 안에서(보통 @Trancational이 설정되어 있는 service 안에서) 다 처리해야 함
+* 스프링 데이터 JPA를 통해 JpaRepository 인터페이스를 사용
+* QueryDSL 설정 및 동적쿼리 사용
