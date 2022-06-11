@@ -9,7 +9,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -29,7 +30,7 @@ class MemberServiceTest {
         Long saveId = memberService.join(member);
 
         //then
-        assertEquals(member, memberRepository.findOne(saveId));
+        assertEquals(member, memberRepository.findById(saveId).get());
     }
 
     @Test
